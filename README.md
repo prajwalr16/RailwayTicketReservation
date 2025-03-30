@@ -175,6 +175,9 @@ The Docker container will automatically set up the database, create an admin use
 }
 ```
 
+---
+
+
 🛑 **Stopping the Application**  
 To stop the running Docker containers:  
 ```bash
