@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    restart: always
+    volumes:
+      - .:/app  # Persist database and files
+    ports:
+      - "8000:8000"
