@@ -14,7 +14,46 @@ A **Django-based** Railway Ticket Reservation system that manages **ticket booki
 - **Dockerized Deployment:** Run the entire application seamlessly with Docker.  
 
 ## 🏗 Architecture Diagram  
-*(Add an architecture diagram here if available)*  
+
+Below is the architecture diagram for the Railway Ticket Reservation API:
+
+```plaintext
++-----------------------+
+|    Client (Browser)   |
++-----------------------+
+         |
+         v
++-----------------------+
+|  REST API Endpoints   |
+|  (Django Framework)   |
++-----------------------+
+         |
+         v
++-----------------------+
+|  Business Logic Layer |
+| (Berth Allocation,    |
+|  RAC, Waitlist, etc.) |
++-----------------------+
+         |
+         v
++-----------------------+
+|  Database Layer       |
+|     (SQLite)          |
++-----------------------+
+         |
+         v
++-----------------------+
+|  Dockerized Services  |
+| (App + DB Containers) |
++-----------------------+
+```
+
+### Key Components:
+1. **Client (Browser):** Users interact with the system through a web interface or API clients.
+2. **REST API Endpoints:** Django-based endpoints handle requests for booking, cancellation, and ticket status.
+3. **Business Logic Layer:** Implements berth allocation, RAC, waitlist management, and concurrency handling.
+4. **Database Layer:** Stores passenger details, ticket statuses, and berth availability using SQLite.
+5. **Dockerized Services:** Ensures seamless deployment and scalability with Docker Compose.
 
 ---
 
@@ -135,3 +174,33 @@ The Docker container will automatically set up the database, create an admin use
    "waitlist_slots_available": 10
 }
 ```
+
+🛑 **Stopping the Application**  
+To stop the running Docker containers:  
+```bash
+sudo docker-compose down
+```
+
+---
+
+## 🛠 Development Setup (Optional)  
+
+If you want to run the project without Docker, follow these steps:
+
+### 1️⃣ Install Dependencies  
+```bash
+pip install -r requirements.txt
+```
+
+### 2️⃣ Apply Migrations  
+```bash
+python3 manage.py makemigrations  
+python3 manage.py migrate  
+```
+
+### 3️⃣ Run the Django Server  
+```bash
+python3 manage.py runserver
+```
+
+The application will be available at [http://localhost:8000/](http://localhost:8000/).
